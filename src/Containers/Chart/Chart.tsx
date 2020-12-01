@@ -10,12 +10,19 @@ type ComponentProps = {
   year: number
   width: number
   height: number
+  speedAnimation: number
 }
 
 const margin = { top: 20, right: 20, bottom: 35, left: 40 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const D3Chart = ({ data, year, width, height }: ComponentProps) => {
+const D3Chart = ({
+  data,
+  year,
+  width,
+  height,
+  speedAnimation,
+}: ComponentProps) => {
   const svgRef = useRef<SVGSVGElement>(null)
 
   const x = d3.scaleLog([200, 1e5], [margin.left, width - margin.right])
@@ -112,12 +119,22 @@ const D3Chart = ({ data, year, width, height }: ComponentProps) => {
         .select<SVGGElement>('g.points')
         .selectAll<SVGCircleElement, YearData>('circle.point')
         .data(dataAt(year, data), (d) => d.name)
-        .join('circle')
+        .join(
+          (enter) => enter.append('circle'),
+          (update) =>
+            update.call((d) =>
+              d
+                .transition()
+                .duration(speedAnimation)
+                .ease(d3.easeLinear)
+                .attr('cx', (d1) => x(d1.income))
+                .attr('cy', (d1) => y(d1.lifeExpectancy))
+            ),
+          (exit) => exit
+        )
         .attr('class', 'point')
         .attr('stroke', 'black')
         .sort((a, b) => d3.descending(a.population, b.population))
-        .attr('cx', (d) => x(d.income))
-        .attr('cy', (d) => y(d.lifeExpectancy))
         .attr('r', (d) => radius(d.population))
         .attr('fill', (d) => color(d.region))
         .call((circle) =>

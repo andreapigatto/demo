@@ -6,7 +6,7 @@ import useWindowSize from './utils'
 
 const minYear = 1800
 const maxYear = 2009
-const speedYear = 100
+const speedYear = 180
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Main = () => {
@@ -25,7 +25,13 @@ const Main = () => {
         intervalStepAnimation={speedYear}
         changed={onChangeHandler}
       />
-      <Chart data={data} year={year} width={width} height={height} />
+      <Chart
+        data={data}
+        year={year}
+        width={width}
+        height={height}
+        speedAnimation={speedYear}
+      />
     </>
   )
 }
