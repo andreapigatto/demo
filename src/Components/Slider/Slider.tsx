@@ -23,10 +23,14 @@ const Slider = ({
 
   useEffect(() => {
     if (buttonState) {
-      intervalId.current = window.setInterval(
-        setIntervalFunc,
-        intervalStepAnimation
-      )
+      if (value < range.maxValue) {
+        intervalId.current = window.setInterval(
+          setIntervalFunc,
+          intervalStepAnimation
+        )
+      } else {
+        setButtonState(false)
+      }
     }
     return () => clearInterval(intervalId.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,6 +41,9 @@ const Slider = ({
   }
 
   const onClickButtonHandler = () => {
+    if (value === range.maxValue) {
+      changed(range.minValue)
+    }
     setButtonState((flag) => !flag)
   }
 
