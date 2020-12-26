@@ -15,5 +15,3 @@ export type YearData = {
   population: number
   lifeExpectancy: number
 }
-
-export type SelectOptions = { label: string; value: string }[]

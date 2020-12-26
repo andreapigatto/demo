@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="16px" viewBox="0 0 12 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Arrow_Simple_left</title>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-130.000000, -21.000000)" fill="#6e7987">
+            <g id="Arrow_Simple_left" transform="translate(130.000000, 21.000000)">
+                <path d="M10.5134001,15.8234528 C10.8616974,16.0649614 11.4044575,16.0578352 11.7410892,15.8073338 C12.0777208,15.5568324 12.0872971,15.1529423 11.7627503,14.8937599 L2.33369194,7.87721038 L11.7627503,1.10624006 C12.0872971,0.847057707 12.0777208,0.443167601 11.7410892,0.19266619 C11.4044575,-0.0578352217 10.8616974,-0.0649613913 10.5134001,0.176547245 L0,7.87721038 L10.5134001,15.8234528 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

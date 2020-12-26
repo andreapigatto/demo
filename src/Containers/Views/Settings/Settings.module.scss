@@ -1,0 +1,55 @@
+.Container {
+  display: flex;
+}
+
+.Section {
+  width: 50%;
+}
+
+.Label {
+  margin-bottom: 1rem;
+}
+
+.Block {
+  margin-bottom: 3rem;
+}
+
+.Area {
+  margin-left: 1rem;
+}
+
+.Title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.Work {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 18rem;
+}
+
+.FieldTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.Field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 18rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.FieldLabel {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.SaveButton {
+  opacity: 0.8;
+}

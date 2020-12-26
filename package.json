@@ -15,8 +15,10 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
-    "react-select": "^3.1.1",
     "react-sortable-hoc": "^1.11.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "rsuite": "^4.8.6",
+    "rsuite-color-picker": "^0.2.0",
     "typescript": "^4.1.2",
     "web-vitals": "^0.2.4"
   },
@@ -80,6 +82,7 @@
     },
     "rules": {
       "react/prop-types": "off",
+      "react/require-default-props": "off",
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
@@ -149,7 +152,7 @@
   "devDependencies": {
     "@tableau/extensions-api-types": "^1.4.0",
     "@types/d3": "^6.2.0",
-    "@types/react-select": "^3.0.26",
+    "@types/resize-observer-browser": "^0.1.4",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",

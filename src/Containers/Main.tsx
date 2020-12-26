@@ -1,38 +1,28 @@
 import { useState } from 'react'
 import data from '../Data/nations.json'
 import Chart from './Chart/Chart'
-import Slider from '../Components/Slider/Slider'
-import useWindowSize from './utils'
+import Sidebar from '../Components/Navigation/Sidebar/Sidebar'
+import { Info, Settings, Gapminder, User } from './Views'
 
-const minYear = 1800
-const maxYear = 2009
-const speedYear = 180
+import classes from './Main.module.scss'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Main = () => {
-  const [year, setYear] = useState(minYear)
-  const [width, height] = useWindowSize()
+  const [viewSelected, setViewSelected] = useState('Chart')
 
-  const onChangeHandler = (newValue: number) => {
-    setYear(newValue)
+  const onSidebarIconClicked = (name: string) => {
+    setViewSelected(name)
   }
 
   return (
-    <>
-      <Slider
-        range={{ minValue: minYear, maxValue: maxYear }}
-        value={year}
-        intervalStepAnimation={speedYear}
-        changed={onChangeHandler}
-      />
-      <Chart
-        data={data}
-        year={year}
-        width={width}
-        height={height}
-        speedAnimation={speedYear}
-      />
-    </>
+    <div className={classes.Main}>
+      <Sidebar viewSelected={viewSelected} iconClicked={onSidebarIconClicked} />
+      <h1 className={classes.Title}>{viewSelected}</h1>
+      <Gapminder open={viewSelected === 'Chart'} data={data} />
+      <Settings open={viewSelected === 'Settings'} disabled />
+      <Info open={viewSelected === 'Help'} />
+      <User open={viewSelected === 'User'} />
+    </div>
   )
 }
 

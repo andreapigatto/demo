@@ -1,16 +1,39 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, MutableRefObject } from 'react'
+import ResizeObserver from 'resize-observer-polyfill'
 
-const useWindowSize = (): number[] => {
-  const [size, setSize] = useState([0, 0])
+const useResizeObserver = (
+  refToMonitorResize: MutableRefObject<HTMLDivElement | null>
+) => {
+  const [contentRect, setContentRect] = useState({ width: 0, height: 0 })
+  const observer = useRef<ResizeObserver | null>(null)
+
   useEffect(() => {
-    const updateSize = () => {
-      setSize([window.innerWidth, window.innerHeight])
+    if (window.ResizeObserver) {
+      observer.current = new window.ResizeObserver((entries) => {
+        const { width, height } = entries[0].contentRect
+        setContentRect({ width, height })
+      })
+    } else {
+      observer.current = new ResizeObserver((entries) => {
+        const { width, height } = entries[0].contentRect
+        setContentRect({ width, height })
+      })
     }
-    window.addEventListener('resize', updateSize)
-    updateSize()
-    return () => window.removeEventListener('resize', updateSize)
-  }, [])
-  return size
+
+    if (refToMonitorResize.current && observer.current) {
+      observer.current.observe(refToMonitorResize.current)
+    }
+
+    return () => {
+      if (observer.current && refToMonitorResize.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.current.unobserve(refToMonitorResize.current)
+      }
+    }
+  }, [refToMonitorResize])
+
+  return contentRect
 }
 
-export default useWindowSize
+export default useResizeObserver
+

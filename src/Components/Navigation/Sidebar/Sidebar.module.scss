@@ -1,0 +1,54 @@
+@import '../../../Styles/variables/variables';
+
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 4rem;
+  height: 100%;
+  background-color: #ffffff;
+  transition: transform 0.3s ease-out;
+}
+
+.Open {
+  transform: translateX(0);
+}
+
+.Close {
+  transform: translateX(-100%);
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+}
+
+.Footer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.Logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.Icon {
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+}
+
+.IconPressed {
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  background-color: $background-main;
+  border-radius: 0.75rem;
+}
+
+.Avatar {
+  cursor: pointer;
+}
