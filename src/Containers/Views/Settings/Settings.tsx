@@ -37,7 +37,7 @@ const Settings = ({
   setFieldsSelected,
   settingsSaved,
   disabled,
-}: ComponentProps) => {
+}: ComponentProps): JSX.Element => {
   const worksPicker = worksheets
     ? worksheets.map((work, index) => ({
         id: index,

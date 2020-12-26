@@ -6,7 +6,7 @@ type ComponentProps = {
 }
 
 // Main logic is defined in related CSS.
-const Spinner = ({ msg }: ComponentProps) => (
+const Spinner = ({ msg }: ComponentProps): JSX.Element => (
   <div className={classes.Container}>
     <div className={classes.SkChase}>
       <div className={classes.SkChaseDot} />

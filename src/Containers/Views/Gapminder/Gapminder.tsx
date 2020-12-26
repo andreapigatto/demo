@@ -16,7 +16,7 @@ const minYear = 1800
 const maxYear = 2009
 const speedYear = 180
 
-const Gapminder = ({ open, data }: ComponentProps) => {
+const Gapminder = ({ open, data }: ComponentProps): JSX.Element => {
   const refElement = useRef<HTMLDivElement | null>(null)
   const [year, setYear] = useState(minYear)
   const { width, height } = useResizeObserver(refElement)

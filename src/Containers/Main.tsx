@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import data from '../Data/nations.json'
-import Chart from './Chart/Chart'
 import Sidebar from '../Components/Navigation/Sidebar/Sidebar'
 import { Info, Settings, Gapminder, User } from './Views'
 
 import classes from './Main.module.scss'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const Main = () => {
+const Main = (): JSX.Element => {
   const [viewSelected, setViewSelected] = useState('Chart')
 
   const onSidebarIconClicked = (name: string) => {

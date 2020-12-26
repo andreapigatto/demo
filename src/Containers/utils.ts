@@ -3,7 +3,7 @@ import ResizeObserver from 'resize-observer-polyfill'
 
 const useResizeObserver = (
   refToMonitorResize: MutableRefObject<HTMLDivElement | null>
-) => {
+): { width: number; height: number } => {
   const [contentRect, setContentRect] = useState({ width: 0, height: 0 })
   const observer = useRef<ResizeObserver | null>(null)
 
@@ -36,4 +36,3 @@ const useResizeObserver = (
 }
 
 export default useResizeObserver
-

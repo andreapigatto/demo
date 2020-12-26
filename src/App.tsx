@@ -8,7 +8,7 @@ import MainTableau from './Containers/MainTableau'
 import { init } from './Tableau'
 import { Spinner } from './Components/UI'
 
-const App = () => {
+const App = (): JSX.Element => {
   const [worksheets, setWorkSheets] = useState<Worksheet[]>([])
   const [mode, setMode] = useState<string | null>(null)
 

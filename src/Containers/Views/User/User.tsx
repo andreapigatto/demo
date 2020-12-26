@@ -6,7 +6,7 @@ type ComponentProps = {
   open: boolean
 }
 
-const User = ({ open }: ComponentProps) => {
+const User = ({ open }: ComponentProps): JSX.Element => {
   return (
     <Card open={open}>
       <p className={classes.Title}>Username</p>

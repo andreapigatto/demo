@@ -4,12 +4,12 @@
 /* global tableau */
 
 // eslint-disable-next-line import/no-unresolved
-import { Dashboard, Worksheet } from '@tableau/extensions-api-types'
+import { Dashboard, Worksheet, DataTable } from '@tableau/extensions-api-types'
 
 export const init = (
   callback: (dash: Dashboard) => void,
   callbackReject: () => void
-) => {
+): void => {
   tableau.extensions
     .initializeAsync()
     .then(() => {
@@ -23,7 +23,7 @@ export const init = (
     })
 }
 
-export const getParameterValue = (dash: Dashboard, paramName: string) => {
+export const getParameterValue = (dash: Dashboard, paramName: string): void => {
   dash
     .getParametersAsync()
     .then((parameters) => {
@@ -39,5 +39,5 @@ export const getParameterValue = (dash: Dashboard, paramName: string) => {
     })
 }
 
-export const getWorkSheetData = (worksheet: Worksheet) =>
+export const getWorkSheetData = (worksheet: Worksheet): Promise<DataTable> =>
   worksheet.getSummaryDataAsync()

@@ -18,7 +18,10 @@ type ComponentProps = {
   iconClicked: (name: string) => void
 }
 
-const Sidebar = ({ viewSelected, iconClicked }: ComponentProps) => {
+const Sidebar = ({
+  viewSelected,
+  iconClicked,
+}: ComponentProps): JSX.Element => {
   const [showSidebar, setShowSidebar] = useState(true)
 
   const onClickIcon = (event: MouseEvent<HTMLImageElement>) => {

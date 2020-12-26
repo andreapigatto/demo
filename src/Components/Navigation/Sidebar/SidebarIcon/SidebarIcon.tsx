@@ -8,7 +8,10 @@ type ComponentProps = {
   sidebarIconClicked: () => void
 }
 
-const SidebarIcon = ({ type, sidebarIconClicked }: ComponentProps) => {
+const SidebarIcon = ({
+  type,
+  sidebarIconClicked,
+}: ComponentProps): JSX.Element => {
   const onClickIcon = () => {
     sidebarIconClicked()
   }

@@ -6,7 +6,7 @@ type ComponentProps = {
   open: boolean
 }
 
-const Info = ({ open }: ComponentProps) => {
+const Info = ({ open }: ComponentProps): JSX.Element => {
   return (
     <Card open={open}>
       <p className={classes.Title}>

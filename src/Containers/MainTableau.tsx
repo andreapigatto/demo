@@ -15,7 +15,7 @@ type ComponentProps = {
   worksheets: Worksheet[]
 }
 
-const Main = ({ worksheets }: ComponentProps) => {
+const Main = ({ worksheets }: ComponentProps): JSX.Element => {
   const [worksheetSelected, setWorksheetSelected] = useState<string | null>(
     null
   )
@@ -54,7 +54,7 @@ const Main = ({ worksheets }: ComponentProps) => {
   useEffect(() => {
     if (settingsSaved) {
       if (tableauData) {
-        // setChartData(getHierarchy(tableauData))
+        setChartData(null)
         setViewSelected('Chart')
       }
       setSettingsSaved(false)

@@ -15,7 +15,7 @@ const Slider = ({
   value,
   intervalStepAnimation,
   changed,
-}: ComponentProps) => {
+}: ComponentProps): JSX.Element => {
   const [buttonState, setButtonState] = useState(false)
   const intervalId = useRef<number>()
 
