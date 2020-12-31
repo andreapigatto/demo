@@ -1,6 +1,8 @@
 import * as d3 from 'd3'
 import { Data, Values, YearData } from '../../../types'
 
+export const menuWidth = 240
+
 const bisectYear = d3.bisector(([yearBis]) => yearBis).left
 
 const valueAt = (values: Values, yearSelected: number) => {
@@ -16,13 +18,26 @@ const valueAt = (values: Values, yearSelected: number) => {
   return a[1]
 }
 
-const dataAt = (currentYear: number, data: Data): YearData[] =>
-  data.map((d) => ({
-    name: d.name,
-    region: d.region,
-    income: valueAt(d.income, currentYear),
-    population: valueAt(d.population, currentYear),
-    lifeExpectancy: valueAt(d.lifeExpectancy, currentYear),
-  }))
-
-export default dataAt
+export const dataAt = (currentYear: number, data: Data): YearData[] => {
+  const yearData: YearData[] = []
+  data.forEach((item) => {
+    let node = {}
+    Object.keys(item).forEach((key) => {
+      node = {
+        ...node,
+        // TODO: FIX HERE AND IN DATAPREP/METHODS. NEED TO BE IMPROVED AND DYNAMIC
+        [key]:
+          key === 'country' ||
+          key === 'region' ||
+          key === 'Country' ||
+          key === 'Region'
+            ? item[key]
+            : valueAt(item[key] as Values, currentYear),
+      }
+    })
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    yearData.push(node)
+  })
+  return yearData
+}

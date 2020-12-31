@@ -1,5 +1,5 @@
 import { init, getParameterValue, getWorkSheetData } from './Connectors/methods'
 
-import { getColumns } from './DataPrep/methods'
+import { getColumns, getData } from './DataPrep/methods'
 
-export { init, getParameterValue, getWorkSheetData, getColumns }
+export { init, getParameterValue, getWorkSheetData, getColumns, getData }

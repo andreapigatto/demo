@@ -1,4 +1,3 @@
-import { SyntheticEvent } from 'react'
 // eslint-disable-next-line import/no-unresolved
 import { Worksheet } from '@tableau/extensions-api-types'
 
@@ -7,9 +6,14 @@ import Card from '../../../Components/UI/Card/Card'
 
 import classes from './Settings.module.scss'
 
-const fieldNames: Record<number, string> = {
-  1: 'Sequence Id',
-  2: 'Task Name',
+const fieldNames: Record<string, string> = {
+  dimension: 'dimension',
+  time: 'time',
+  category: 'category',
+  xAxis: 'x-axis',
+  yAxis: 'y-axis',
+  color: 'color',
+  size: 'size',
 }
 
 type ComponentProps = {
@@ -18,11 +22,8 @@ type ComponentProps = {
   worksheetSelected?: string | null
   setWorkbook?: (work: string) => void
   tableauFields?: Record<string, string> | null
-  fieldsSelected?: Record<string, string>
-  setFieldsSelected?: (
-    field: string,
-    event: SyntheticEvent<HTMLElement, Event>
-  ) => void
+  fieldsSelected: Record<string, string>
+  setFieldsSelected: (field: string, value: string) => void
   settingsSaved?: () => void
   disabled?: boolean
 }
@@ -60,13 +61,8 @@ const Settings = ({
     }
   }
 
-  const onChangeValueField = (
-    val: string,
-    event: SyntheticEvent<HTMLElement, Event>
-  ) => {
-    if (setFieldsSelected) {
-      setFieldsSelected(val, event)
-    }
+  const onChangeValueField = (field: string) => (value: string) => {
+    setFieldsSelected(field, value)
   }
 
   const onSaveButtonClicked = () => {
@@ -97,13 +93,13 @@ const Settings = ({
               <p className={classes.Title}>Fields</p>
               {Object.keys(fieldNames).map((key) => (
                 <div key={key} className={classes.Field}>
-                  <p className={classes.FieldLabel}>{fieldNames[+key]}</p>
+                  <p className={classes.FieldLabel}>{fieldNames[key]}</p>
                   <SelectPicker
                     id={key}
                     data={fieldsPicker}
                     value={fieldsSelected ? fieldsSelected[key] : null}
                     disabled={disabled}
-                    onChange={onChangeValueField}
+                    onChange={onChangeValueField(key)}
                     searchable={false}
                   />
                 </div>

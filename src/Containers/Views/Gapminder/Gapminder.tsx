@@ -10,13 +10,22 @@ import Slider from '../../../Components/UI/Slider/Slider'
 type ComponentProps = {
   open: boolean
   data: Data | null
+  tableauFields?: Record<string, string> | null
+  fieldsSelected: Record<string, string>
+  setFieldsSelected: (field: string, value: string) => void
 }
 
 const minYear = 1800
 const maxYear = 2009
 const speedYear = 180
 
-const Gapminder = ({ open, data }: ComponentProps): JSX.Element => {
+const Gapminder = ({
+  open,
+  data,
+  tableauFields,
+  fieldsSelected,
+  setFieldsSelected,
+}: ComponentProps): JSX.Element => {
   const refElement = useRef<HTMLDivElement | null>(null)
   const [year, setYear] = useState(minYear)
   const { width, height } = useResizeObserver(refElement)
@@ -41,6 +50,9 @@ const Gapminder = ({ open, data }: ComponentProps): JSX.Element => {
             width={width}
             height={height}
             speedAnimation={speedYear}
+            tableauFields={tableauFields}
+            fieldsSelected={fieldsSelected}
+            setFieldsSelected={setFieldsSelected}
           />
         </>
       ) : (

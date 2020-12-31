@@ -1,17 +1,11 @@
 export type Values = number[][]
 
-export type Data = {
-  name: string
-  region: string
-  income: Values
-  population: Values
-  lifeExpectancy: Values
-}[]
+export type Node = {
+  [key: string]: Values | string
+}
+
+export type Data = Node[]
 
 export type YearData = {
-  name: string
-  region: string
-  income: number
-  population: number
-  lifeExpectancy: number
+  [key: string]: string | number
 }

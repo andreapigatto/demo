@@ -63,7 +63,6 @@ const Slider = ({
       <button onClick={onClickButtonHandler} type="button">
         {!buttonState ? 'START' : 'STOP'}
       </button>
-      <div>{value}</div>
     </form>
   )
 }

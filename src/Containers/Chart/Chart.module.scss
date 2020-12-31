@@ -1,0 +1,22 @@
+.MainChart {
+  display: flex;
+}
+
+.Tooltip {
+  position: absolute;
+  text-align: center;
+  width: 7.5rem;
+  height: 4rem;
+  padding: 0.125rem;
+  font: 0.75rem sans-serif;
+  background-color: #b0c4de;
+  border-radius: 0.5rem;
+  p {
+    pointer-events: none;
+  }
+  button {
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+  }
+}

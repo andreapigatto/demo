@@ -1,11 +1,11 @@
-import { useState, useEffect, SyntheticEvent } from 'react'
+import { useState, useEffect } from 'react'
 
 // eslint-disable-next-line import/no-unresolved
 import { Worksheet, DataTable } from '@tableau/extensions-api-types'
 import { Data } from '../types'
 
 // eslint-disable-next-line import/named
-import { getWorkSheetData, getColumns } from '../Tableau'
+import { getWorkSheetData, getColumns, getData } from '../Tableau'
 import Sidebar from '../Components/Navigation/Sidebar/Sidebar'
 import { Gapminder, Info, Settings, User } from './Views'
 
@@ -54,7 +54,7 @@ const Main = ({ worksheets }: ComponentProps): JSX.Element => {
   useEffect(() => {
     if (settingsSaved) {
       if (tableauData) {
-        setChartData(null)
+        setChartData(getData(tableauData, tableauFields, fieldsSelected))
         setViewSelected('Chart')
       }
       setSettingsSaved(false)
@@ -74,13 +74,10 @@ const Main = ({ worksheets }: ComponentProps): JSX.Element => {
     setSettingsSaved(true)
   }
 
-  const onSetFieldsSelected = (
-    field: string,
-    event: SyntheticEvent<HTMLElement, Event>
-  ) => {
-    // console.log('EVENT', event.target)
+  const onSetFieldsSelected = (field: string, value: string) => {
     setFieldsSelected({
       ...fieldsSelected,
+      [field]: value,
     })
   }
 
@@ -88,7 +85,13 @@ const Main = ({ worksheets }: ComponentProps): JSX.Element => {
     <div className={classes.Main}>
       <Sidebar viewSelected={viewSelected} iconClicked={onSidebarIconClicked} />
       <h1 className={classes.Title}>{viewSelected}</h1>
-      <Gapminder open={viewSelected === 'Chart'} data={chartData} />
+      <Gapminder
+        open={viewSelected === 'Chart'}
+        data={chartData}
+        tableauFields={tableauFields}
+        fieldsSelected={fieldsSelected}
+        setFieldsSelected={onSetFieldsSelected}
+      />
       <Settings
         open={viewSelected === 'Settings'}
         worksheets={worksheets}
