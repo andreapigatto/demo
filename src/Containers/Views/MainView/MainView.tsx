@@ -19,7 +19,7 @@ const minYear = 1800
 const maxYear = 2009
 const speedYear = 180
 
-const Gapminder = ({
+const MainView = ({
   open,
   data,
   tableauFields,
@@ -62,4 +62,4 @@ const Gapminder = ({
   )
 }
 
-export default Gapminder
+export default MainView
