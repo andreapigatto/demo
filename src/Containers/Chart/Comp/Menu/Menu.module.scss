@@ -1,13 +1,15 @@
 .Menu {
   border-left: 0.1rem solid #b0c4de;
   margin-left: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .Block {
   display: flex;
   align-items: center;
-  justify-content: center;
+  p {
+    margin-right: 1rem;
+  }
 }
 
 .Legend {

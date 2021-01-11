@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import data from '../Data/nations.json'
+
 import Sidebar from '../Components/Navigation/Sidebar/Sidebar'
+import Header from './Header/Header'
 import { Info, Settings, MainView, User } from './Views'
 
+import data from '../Data/nations.json'
 import classes from './Main.module.scss'
 
 const Main = (): JSX.Element => {
@@ -37,7 +39,7 @@ const Main = (): JSX.Element => {
   return (
     <div className={classes.Main}>
       <Sidebar viewSelected={viewSelected} iconClicked={onSidebarIconClicked} />
-      <h1 className={classes.Title}>{viewSelected}</h1>
+      <Header viewSelected={viewSelected} />
       <MainView
         open={viewSelected === 'Chart'}
         data={data}

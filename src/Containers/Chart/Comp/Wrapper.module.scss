@@ -1,35 +1,14 @@
-.Container {
-  position: relative;
-}
-
 .XAxis {
   position: absolute;
-  left: 50%;
+  bottom: 1rem;
+  left: 35%;
 }
 
 .YAxis {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: rotate(-90deg)
-}
-
-.XAxisLabel {
-  position: absolute;
-  right: 16rem;
-  bottom: 0.3rem;
-  p {
-    font-size: 0.8rem;
-  }
-}
-
-.YAxisLabel {
-  position: absolute;
-  left: 0.6rem;
-  top: 0;
-  p {
-    font-size: 0.8rem;
-  }
+  transform: rotate(-90deg);
 }
 
 .YearLabel {

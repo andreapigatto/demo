@@ -2,6 +2,7 @@ import * as d3 from 'd3'
 import { Data, Values, YearData } from '../../../types'
 
 export const menuWidth = 240
+export const sliderWidth = 22
 
 const bisectYear = d3.bisector(([yearBis]) => yearBis).left
 

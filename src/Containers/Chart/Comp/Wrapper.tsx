@@ -32,8 +32,7 @@ const Wrapper = ({
   }
 
   return (
-    <div className={classes.Container}>
-      {children}
+    <>
       <SelectPicker
         id="yAxis"
         className={classes.YAxis}
@@ -50,16 +49,11 @@ const Wrapper = ({
         onChange={onChangeValueField('xAxis')}
         searchable={false}
       />
-      <div className={classes.XAxisLabel}>
-        <p>Income per Capita (dollars)</p>
-      </div>
-      <div className={classes.YAxisLabel}>
-        <p>Life expectancy (years)</p>
-      </div>
+      {children}
       <div className={classes.YearLabel}>
         <h3>{year}</h3>
       </div>
-    </div>
+    </>
   )
 }
 

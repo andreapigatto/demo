@@ -1,6 +1,4 @@
-import { useState, MouseEvent } from 'react'
-
-import SidebarIcon from './SidebarIcon/SidebarIcon'
+import { MouseEvent } from 'react'
 
 import Logo from '../../../assets/logo.svg'
 import ChartIcon from '../../../assets/icon-chart.svg'
@@ -9,9 +7,6 @@ import SettingsIcon from '../../../assets/icon-settings.svg'
 import HelpIcon from '../../../assets/icon-help.svg'
 import AvatarImage from '../../../assets/avatar.png'
 import classes from './Sidebar.module.scss'
-
-const closeClasses = [classes.Sidebar, classes.Close].join(' ')
-const openClasses = [classes.Sidebar, classes.Open].join(' ')
 
 type ComponentProps = {
   viewSelected: string
@@ -22,23 +17,13 @@ const Sidebar = ({
   viewSelected,
   iconClicked,
 }: ComponentProps): JSX.Element => {
-  const [showSidebar, setShowSidebar] = useState(true)
-
   const onClickIcon = (event: MouseEvent<HTMLImageElement>) => {
     iconClicked((event.target as HTMLImageElement).id)
   }
 
-  const onSidebarIconClicked = () => {
-    setShowSidebar((show) => !show)
-  }
-
   return (
     <>
-      <SidebarIcon
-        type={showSidebar}
-        sidebarIconClicked={onSidebarIconClicked}
-      />
-      <div className={showSidebar ? openClasses : closeClasses}>
+      <div className={classes.Sidebar}>
         <div className={classes.Header}>
           <img className={classes.Logo} src={Logo} alt="logo" />
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}

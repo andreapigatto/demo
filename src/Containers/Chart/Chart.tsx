@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import * as d3 from 'd3'
 
-import { dataAt, Wrapper, Menu, menuWidth } from './Comp'
+import { dataAt, Wrapper, Menu, menuWidth, sliderWidth } from './Comp'
 
 import { Data, YearData, Values } from '../../types'
 
@@ -18,7 +18,7 @@ type ComponentProps = {
   setFieldsSelected: (field: string, value: string) => void
 }
 
-const margin = { top: 20, right: 20, bottom: 35, left: 40 }
+const margin = { top: 20, right: 20, bottom: 50, left: 70 }
 const maxZoomLevel = 3
 const minZoomLevel = 1
 
@@ -37,6 +37,7 @@ const D3Chart = ({
   const tooltipRef = useRef<HTMLDivElement>(null)
 
   const svgWidth = width - menuWidth
+  const svgHeight = height - sliderWidth
 
   const xAxisData =
     Object.keys(fieldsSelected).length > 0
@@ -65,7 +66,7 @@ const D3Chart = ({
   )
   const y = d3.scaleLinear(
     [Math.min(...yAxisData), Math.max(...yAxisData)],
-    [height - margin.bottom, margin.top]
+    [svgHeight - margin.bottom, margin.top]
   )
   const xAxis = d3.axisBottom(x).ticks(svgWidth / 80, ',')
   const yAxis = d3.axisLeft(y)
@@ -136,7 +137,7 @@ const D3Chart = ({
               .attr('x1', (d) => 0.5 + x(d))
               .attr('x2', (d) => 0.5 + x(d))
               .attr('y1', margin.top)
-              .attr('y2', height - margin.bottom)
+              .attr('y2', svgHeight - margin.bottom)
           )
           .call((g1) =>
             g1
@@ -151,15 +152,33 @@ const D3Chart = ({
           )
       svg
         .select<SVGGElement>('g.xAxis')
-        .attr('transform', `translate(0,${height - margin.bottom})`)
+        .attr('transform', `translate(0,${svgHeight - margin.bottom})`)
         .call(xAxis)
         .call((d) => d.select('.domain').remove())
+        .call((g) =>
+          g
+            .append('text')
+            .attr('x', width)
+            .attr('y', -10)
+            .attr('fill', 'currentColor')
+            .attr('text-anchor', 'end')
+            .text('Income per capita (dollars) →')
+        )
       svg
         .select<SVGGElement>('g.yAxis')
         .call(yAxis)
         .attr('transform', `translate(${margin.left},0)`)
         .call(yAxis)
         .call((d) => d.select('.domain').remove())
+        .call((g) =>
+          g
+            .append('text')
+            .attr('x', -margin.left)
+            .attr('y', 10)
+            .attr('fill', 'currentColor')
+            .attr('text-anchor', 'start')
+            .text('↑ Life expectancy (years)')
+        )
       svg.select<SVGGElement>('g.grid').call(grid)
     }
   }
@@ -190,6 +209,7 @@ const D3Chart = ({
         )
         .attr('class', 'point')
         .attr('stroke', 'black')
+        .attr('stroke-width', '0.8px')
         .sort((a, b) => d3.descending(a.population, b.population))
         .attr('r', (d) => radius(+d[fieldsSelected.size]))
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -268,9 +288,9 @@ const D3Chart = ({
       <div className={classes.MainChart}>
         <div className={classes.Tooltip} ref={tooltipRef} />
         <svg
-          viewBox={`0,0, ${svgWidth}, ${height}`}
+          viewBox={`0,0, ${svgWidth}, ${svgHeight}`}
           width={svgWidth}
-          height={height}
+          height={svgHeight}
           ref={svgRef}
         />
         <Menu

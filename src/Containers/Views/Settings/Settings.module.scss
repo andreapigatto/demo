@@ -39,10 +39,12 @@
 .Field {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 18rem;
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
+  p {
+    margin-right: 1rem;
+  }
 }
 
 .FieldLabel {
