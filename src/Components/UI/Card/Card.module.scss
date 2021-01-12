@@ -2,7 +2,7 @@
 
 .Card {
   position: fixed;
-  padding: 1.5rem 2rem;
+  padding: 3rem 3.5rem;
   top: 3rem;
   left: 4.5rem;
   right: 1rem;
@@ -10,8 +10,8 @@
   border-radius: 0.75rem;
   box-shadow: 0 5px 20px 0 rgba(176, 195, 211, 0.16);
   background-color: #ffffff;
-  overflow: scroll;
   transition: transform 0.3s ease-out;
+  overflow-y: scroll;
 }
 
 .Open {

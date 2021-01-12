@@ -7,6 +7,7 @@ import { Data } from '../types'
 // eslint-disable-next-line import/named
 import { getWorkSheetData, getColumns, getData } from '../Tableau'
 import Sidebar from '../Components/Navigation/Sidebar/Sidebar'
+import Header from './Header/Header'
 import { MainView, Info, Settings, User } from './Views'
 
 import classes from './Main.module.scss'
@@ -84,7 +85,7 @@ const Main = ({ worksheets }: ComponentProps): JSX.Element => {
   return (
     <div className={classes.Main}>
       <Sidebar viewSelected={viewSelected} iconClicked={onSidebarIconClicked} />
-      <h1 className={classes.Title}>{viewSelected}</h1>
+      <Header viewSelected={viewSelected} />
       <MainView
         open={viewSelected === 'Chart'}
         data={chartData}

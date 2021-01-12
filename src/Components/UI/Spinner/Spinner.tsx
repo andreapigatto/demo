@@ -16,7 +16,7 @@ const Spinner = ({ msg }: ComponentProps): JSX.Element => (
       <div className={classes.SkChaseDot} />
       <div className={classes.SkChaseDot} />
     </div>
-    <p>{msg}</p>
+    <p className={classes.Text}>{msg}</p>
   </div>
 )
 

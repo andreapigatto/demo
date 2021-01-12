@@ -153,6 +153,7 @@ const D3Chart = ({
       svg
         .select<SVGGElement>('g.xAxis')
         .attr('transform', `translate(0,${svgHeight - margin.bottom})`)
+        .attr('cursor', 'default')
         .call(xAxis)
         .call((d) => d.select('.domain').remove())
         .call((g) =>
@@ -163,11 +164,13 @@ const D3Chart = ({
             .attr('fill', 'currentColor')
             .attr('text-anchor', 'end')
             .text('Income per capita (dollars) →')
+            .attr('cursor', 'default')
         )
       svg
         .select<SVGGElement>('g.yAxis')
         .call(yAxis)
         .attr('transform', `translate(${margin.left},0)`)
+        .attr('cursor', 'default')
         .call(yAxis)
         .call((d) => d.select('.domain').remove())
         .call((g) =>
@@ -178,6 +181,7 @@ const D3Chart = ({
             .attr('fill', 'currentColor')
             .attr('text-anchor', 'start')
             .text('↑ Life expectancy (years)')
+            .attr('cursor', 'default')
         )
       svg.select<SVGGElement>('g.grid').call(grid)
     }
