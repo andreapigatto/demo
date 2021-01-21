@@ -1,0 +1,36 @@
+@import '../../../Styles/variables/variables';
+
+.Dialog {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  z-index: 200;
+  background-color: #ffffff;
+  padding: 2rem 5rem;
+  transition: transform 0.3s ease-out;
+  border-radius: 0.75rem;
+  cursor: default;
+  user-select: none;
+  overflow: hidden;
+}
+
+.Open {
+  transform: translateY(0);
+}
+
+.Close {
+  transform: translateY(-200%);
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.CancelIcon {
+  cursor: pointer;
+}
