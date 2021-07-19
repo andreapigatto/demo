@@ -76,8 +76,10 @@ export const getData = (
               ...countryData,
               [tableauFields[+key]]:
                 +key === dimensionTableauPos || +key === categoryTableauPos
-                  ? row[+key].formattedValue!
-                  : [[+row[timeTableauPos].formattedValue!, +row[+key].value]],
+                  ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                    row[+key].formattedValue!
+                  : // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                    [[+row[timeTableauPos].formattedValue!, +row[+key].value]],
             }
           }
         })
@@ -91,12 +93,14 @@ export const getData = (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               ...countryData[tableauFields[+index]],
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               [+row[timeTableauPos].formattedValue!, +row[+index].value],
             ],
           }
         }
       })
     }
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     currentCountry = row[0].formattedValue!
   })
 
