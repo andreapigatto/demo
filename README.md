@@ -1,3 +1,3 @@
-# Gapminder Extension
+# Gapminder App
 
-production: https://gapminder.netlify.app
+production: https://demo.netlify.app

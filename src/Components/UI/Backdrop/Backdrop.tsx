@@ -1,5 +1,3 @@
-import React from 'react'
-
 // CSS styles
 import classes from './Backdrop.module.scss'
 
@@ -8,7 +6,7 @@ type ComponentProps = {
   clicked: () => void
 }
 
-const Backdrop = (props: ComponentProps) => {
+const Backdrop = (props: ComponentProps): JSX.Element | null => {
   const { show, clicked } = props
 
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions

@@ -76,8 +76,8 @@ export const getData = (
               ...countryData,
               [tableauFields[+key]]:
                 +key === dimensionTableauPos || +key === categoryTableauPos
-                  ? row[+key].formattedValue
-                  : [[+row[timeTableauPos].formattedValue, +row[+key].value]],
+                  ? row[+key].formattedValue!
+                  : [[+row[timeTableauPos].formattedValue!, +row[+key].value]],
             }
           }
         })
@@ -91,13 +91,13 @@ export const getData = (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               ...countryData[tableauFields[+index]],
-              [+row[timeTableauPos].formattedValue, +row[+index].value],
+              [+row[timeTableauPos].formattedValue!, +row[+index].value],
             ],
           }
         }
       })
     }
-    currentCountry = row[0].formattedValue
+    currentCountry = row[0].formattedValue!
   })
 
   return result

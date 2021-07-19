@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Backdrop from '../Backdrop/Backdrop'
 import CancelIcon from '../../../assets/icon-cancel.svg'
 
@@ -15,7 +13,12 @@ type ComponentProps = {
 const closeClasses = [classes.Dialog, classes.Close].join(' ')
 const openClasses = [classes.Dialog, classes.Open].join(' ')
 
-const Dialog = ({ open, title, children, closed }: ComponentProps) => {
+const Dialog = ({
+  open,
+  title,
+  children,
+  closed,
+}: ComponentProps): JSX.Element => {
   const onBackdropClicked = () => {
     closed()
   }
