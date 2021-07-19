@@ -1,3 +1,3 @@
 # Gapminder App
 
-production: https://demo.netlify.app
+production: https://demogapapp.netlify.app
